@@ -18,3 +18,5 @@
 * Method - a collection of statements that perform a function
 * Main Methods - serves as an entry/starting point for the app
 * Code blocks - grouping of statements and/or methods
+* Parameter - a definition as shown in the method declaration
+* Argument - the actual value that's passed to the method when we call it (often interchangeably used with parameter)
