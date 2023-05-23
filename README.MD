@@ -18,4 +18,3 @@
 * Method - a collection of statements that perform a function
 * Main Methods - serves as an entry/starting point for the app
 * Code blocks - grouping of statements and/or methods
-* 
