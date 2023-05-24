@@ -81,14 +81,37 @@ public void myMethod() {
 ```
 
 **Parameter**: a definition as shown in the method declaration
+```
+void myMethod(int myParameter) {   // myParameter is a parameter
+  System.out.println(myParameter);
+}
+```
 
 **Argument**: the actual value that's passed to the method when we call it (often interchangeably used with parameter)
+```
+int myArgument = 5;   // myArgument is an argument
+myMethod(myArgument);
+```
 
 **Procedure**: often used to refer to a method that has a void return type
+```
+void myProcedure() {
+  System.out.println("This is a procedure. It does not return any value.");
+}
+```
 
 **Method Overloading**: two or more methods with the same name but different arguments
+```
+void printNumber(int number) {
+  System.out.println("Printing an int: " + number);
+}
 
-**For Loop**: Often used when the number of iterations is known in advance. It has three parts: initialization, 
+void printNumber(double number) {
+  System.out.println("Printing a double: " + number);
+}
+```
+
+**For Loop**: Often used when the number of iterations is known in advance. It has three parts: initialization,
 condition, and iteration.
 ```
 for (int number = 0; number <= 10; number++) {
@@ -96,7 +119,7 @@ for (int number = 0; number <= 10; number++) {
 }
 ```
 
-**For-Each Loop**: Also known as the enhanced for loop, it is used to traverse array or collection elements. 
+**For-Each Loop**: Also known as the enhanced for loop, it is used to traverse array or collection elements.
 It is more readable and eliminates the possibility of bugs related to the condition for loop termination.
 ```
 int[] numbers = {1, 2, 3, 4, 5};
@@ -107,8 +130,8 @@ for (int number : numbers) {
 ```
 
 **While Loop**:
-* A while loop repeatedly executes a block of code as long as a specified condition is true. If the condition is false 
-* at the start, the loop body won't be executed at all.
+A while loop repeatedly executes a block of code as long as a specified condition is true. If the condition is false
+at the start, the loop body won't be executed at all.
 ```
 int number = 0;
 
@@ -119,8 +142,8 @@ while (number <= 10) {
 ```
 
 **Do-While Loop**:
-* A do-while loop is similar to a while loop, but the condition is checked after the loop body is executed. This means 
-* the loop body will always run at least once, even if the condition is false at the start.
+A do-while loop is similar to a while loop, but the condition is checked after the loop body is executed. This means
+the loop body will always run at least once, even if the condition is false at the start.
 ```
 int number = 0;
 
@@ -128,9 +151,9 @@ do {
   System.out.println(number);
   number++;
 } while (number <= 10);
-``` 
+```
 
-**Switch Statement**: A control flow statement in Java that allows a variable to be tested for equality against a list 
+**Switch Statement**: A control flow statement in Java that allows a variable to be tested for equality against a list
 of values (called cases). It executes the block of code corresponding to the first matching case.
 ```
 int number = 2;
@@ -150,7 +173,7 @@ switch (number) {
 System.out.println(result);
 ```
 
-**Enhanced Switch** (Java 14 onwards): This switch allows for more concise syntax and can be used as an expression, 
+**Enhanced Switch** (Java 14 onwards): This switch allows for more concise syntax and can be used as an expression,
 allowing for direct assignment of the result to a variable.
 ```
 int number = 2;
@@ -164,18 +187,17 @@ String result = switch (number) {
 System.out.println(result);
 ```
 
-**Scope**: The scope of a variable, function, class, etc., is the part of the code where it can be accessed or used. 
+**Scope**: The scope of a variable, function, class, etc., is the part of the code where it can be accessed or used.
 The scope of a variable is determined by the context in which it is declared. It is generally bound by its enclosing brackets {}.
 
-* **In Scope**: When we say a variable (or function, class, etc.) is "in scope", it means that it is accessible and can be 
-used in the current part of the code. For instance, a variable declared inside a function is in scope within that 
-function, but not outside of it.
-* **Out of Scope**: Conversely, when a variable (or function, class, etc.) is "out of scope", it means it is not accessible 
-or usable in the current part of the code. An attempt to use such a variable would result in a compile-time error.
-
+* **In Scope**: When we say a variable (or function, class, etc.) is "in scope", it means that it is accessible and can be
+  used in the current part of the code. For instance, a variable declared inside a function is in scope within that
+  function, but not outside of it.
+* **Out of Scope**: Conversely, when a variable (or function, class, etc.) is "out of scope", it means it is not accessible
+  or usable in the current part of the code. An attempt to use such a variable would result in a compile-time error.
 ```
 public class Main {
-    int x = 10;  // This variable is in scope for the whole class
+int x = 10;  // This variable is in scope for the whole class
 
     public void myMethod() {
         int y = 5;  // This variable is in scope only within myMethod
@@ -185,7 +207,7 @@ public class Main {
 
     public void anotherMethod() {
         System.out.println(x);  // This is fine, x is in scope
-        System.out.println(y);  // Compile error! y is out of scope in this method
+        // System.out.println(y);  // Compile error! y is out of scope in this method
     }
 }
 ```
@@ -193,17 +215,55 @@ public class Main {
 **Static Field**:
 * Requires 'static' keyword when declared on the class
 * Value of this field stays with the class in memory and doesn't change
-  * MyClass.myFieldName;
+```
+public class MyClass {
+    static int myFieldName = 42; // static field
+
+    public static void main(String[] args) {
+        System.out.println(MyClass.myFieldName); // Accessing static field
+    }
+```
 
 **Instance Field**:
 * Does not have 'static' keyword
 * Value of the field is not allocated into memory until the object is created
-  * myObject.myFieldName;
+```
+public class MyClass {
+int myFieldName = 42; // instance field
+
+    public static void main(String[] args) {
+        MyClass myObject = new MyClass();
+        System.out.println(myObject.myFieldName); // Accessing instance field
+    }
+}
+```
 
 **Static Method**:
 * Requires 'static' keyword when declared on the class
-  * MyClass.myMethod(myArguments);
+```
+public class MyClass {
+public static void myMethod() { // static method
+System.out.println("This is a static method.");
+}
+
+    public static void main(String[] args) {
+        MyClass.myMethod(); // Calling static method
+    }
+}
+```
 
 **Instance Method**:
 * Does not have 'static' keyword
-  * myObject.myMethod(myArguments);
+```
+public class MyClass {
+  
+  public void myMethod() { // instance method
+    System.out.println("This is an instance method.");
+  }
+  
+  public static void main(String[] args) {
+      MyClass myObject = new MyClass();
+      myObject.myMethod(); // Calling instance method
+  }
+}
+```
