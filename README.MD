@@ -212,6 +212,29 @@ int x = 10;  // This variable is in scope for the whole class
 }
 ```
 
+**Access Modifiers**:
+Access modifiers in Java determine who can access certain components of your code such as classes, methods, and variables. They set the visibility scope of these components.
+* **Public**: Can be accessed from any other class in the application, regardless of the package the other class belongs to. This is the broadest level of access.
+* **Protected**: Can be accessed from any class in the same package, and also from subclasses in any other package.
+* **Private**: Can only be accessed from within the same class.
+* **Default** Can only be accessed from classes within the same package. Also known as "package-private".
+```
+public class MyClass {
+  
+  public int publicVariable;        // Accessible everywhere
+  protected int protectedVariable;  // Accessible within same package and subclasses
+  int defaultVariable;              // Accessible within same package only
+  private int privateVariable;      // Accessible within this class only
+
+  public void publicMethod() {}     // Accessible everywhere
+  protected void protectedMethod() {} // Accessible within same package and subclasses
+  void defaultMethod() {}           // Accessible within same package only
+  private void privateMethod() {}   // Accessible within this class only
+  
+}
+```
+
+
 **Static Field**:
 * Requires 'static' keyword when declared on the class
 * Value of this field stays with the class in memory and doesn't change
