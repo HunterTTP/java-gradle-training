@@ -18,20 +18,7 @@ float floatType = 10.5f;
 String stringType = "Java";
 ```
 
-**Class**: A blueprint for creating objects and defining their behavior.
-```
-public class MyClass { 
-  // class body
-}
-```
-
-**Object**: An instance of a particular class with a given set of attributes. Also referred to as an instance. 
-You create an object by "instantiating" a class.
-```
-MyClass myObject = new MyClass();  // myObject is an instance (object) of MyClass
-```
-
-**Wrapper class**: Provides a way for primitive data types (int, float, etc) to be used as objects.
+**Wrapper class**: Provides a way for primitive data types (int, float, etc.) to be used as objects.
 ```
 Integer myInt = Integer.valueOf(10); 
 Float myFloat = Float.valueOf(10.5f); 
@@ -291,13 +278,174 @@ public class MyClass {
 }
 ```
 
-**Scanner**: A class used to get user input from the console. Can parse primitives and strings. An easier replacement 
-for System.in.
+**Scanner**: A class in Java used to get user input from the console. It can parse various primitive types and strings. An easier replacement for System.in.
+```
+import java.util.Scanner;
 
-**Exception**: Any error that happens in code. Handled with try/catch so the program knows what to do instead 
-of crashing.
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Enter your name: ");
+    String name = scanner.nextLine();
+    System.out.println("Hello, " + name);
+  }
+}
+```
 
-**Import statements**: Lets us use classes from code created by others.
+**Exception**: Any error that occurs during the execution of a program. Exceptions are typically handled with try/catch blocks so the program knows what to do instead of crashing.
+```
+public class Main {
+  public static void main(String[] args) {
+    try {
+      int[] numbers = new int[5];
+      System.out.println(numbers[10]); // This will throw an exception
+    } catch (ArrayIndexOutOfBoundsException e) {
+      System.out.println("An exception occurred: " + e);
+    }
+  }
+}
+```
 
-**Return multiple items from a function**: This is most commonly accomplished by using collections (list, set, map, etc)
-but you can also use arrays and classes.
+**Import statements**: Import statements in Java let us use classes and other code components that were created by others and are not in the current package.
+```
+import java.util.ArrayList;  // Importing ArrayList class from java.util package
+
+public class Main {
+  public static void main(String[] args) {
+    ArrayList<String> list = new ArrayList<>();
+    list.add("Hello");
+    System.out.println(list.get(0));
+  }
+}
+```
+
+**Return multiple items from a function**: This can be accomplished by using collections (list, set, map, etc.), arrays, or creating a class to hold the values.
+```
+public class Main {
+  
+  public static void main(String[] args) {
+    int[] array = getNumbers();
+    System.out.println(array[0] + ", " + array[1]);
+  }
+  
+  public static int[] getNumbers() {
+      return new int[]{5, 10};
+  }
+}
+```
+
+**Object-Oriented Programming (OOP)**: A programming paradigm that models real-world objects as software objects. These objects contain both data (fields) and behavior (methods). It is sometimes referred to as class-based programming.
+
+**Software Object**: A software object, modeled after a real-world object, is an instance of a class. It stores its state in fields (also known as variables or attributes), and exposes its behavior through methods.
+
+**Class**: A class in Java is a blueprint for creating objects. It describes the data (fields) and the behavior (methods) that are relevant to the real-world object it's designed to represent.
+```
+public class MyClass {
+  // class body
+}
+```
+
+**Object**: An object, also referred to as an instance, is an instantiation of a class with a specific set of attributes.
+```
+MyClass myObject = new MyClass();  // myObject is an instance (object) of MyClass
+```
+
+**Class Member**: A class member in Java can be a field, method, or some type of dependent element of a class. Class members can be either static (defined at the class level) or instance (defined at the object level).
+```
+public class MyClass {
+
+  static int staticField;  // This is a static class member
+  int instanceField;  // This is an instance class member
+
+  static void staticMethod() {}  // This is a static class member
+  void instanceMethod() {}  // This is an instance class member
+  
+}
+```
+
+**Package**: Logical groupings of classes. If no package is specified for a class, it belongs to the default package.
+```
+package com.example; public class MyClass { } // MyClass is in the com.example package
+```
+
+**Top-Level Class**: A class not enclosed in another class, type, or method's code-block. The access modifier can be Public or none (default).
+```
+public class MyClass { } // MyClass is a public top-level class
+class MyOtherClass { } // MyOtherClass is a default (package-private) top-level class
+```
+
+**Local Variable**: Variables declared and only accessible within a method.
+```
+public void myMethod() {
+int localVariable = 10; // localVariable is a local variable
+}
+```
+
+**Class Member Access Modifiers**: Access modifier at the member level allows granular control over class members.
+```
+public class MyClass {
+int defaultAccessMember; // defaultAccessMember is accessible within the same package
+public int publicAccessMember; // publicAccessMember is accessible from any class in any package
+protected int protectedAccessMember; // protectedAccessMember is accessible within the same package or subclasses
+private int privateAccessMember; // privateAccessMember is only accessible within MyClass
+}
+```
+
+**Encapsulation**: Practice of hiding some fields and methods from public access.
+```
+public class MyClass {
+private int myField; // myField is private, so it's encapsulated
+
+    public int getMyField() { return myField; } // public getter exposes myField safely
+    public void setMyField(int myField) { this.myField = myField; } // public setter modifies myField safely
+}
+```
+
+**Null**: A keyword meaning the variable or attribute has a type but no reference to an object.
+```
+Object myObject = null; // myObject is declared but has no assigned object, so it's null
+```
+
+**Field Default Values**: Fields on classes are assigned default values by Java.
+```
+public class MyClass {
+boolean defaultBoolean; // default is false
+int defaultInt; // default is 0
+double defaultDouble; // default is 0.0
+}
+```
+
+**Formatted String**: Dynamically inserts values into a string.
+```
+System.out.printf("Hello %s, your score is %d%n", "Alice", 85); // %s is replaced with "Alice", %d is replaced with 85
+```
+
+**Getter/Setter**: Method on a class that returns (or sets) the value of a private field on an instance of an object.
+```
+public class MyClass {
+private int myField; // myField is private
+
+    public int getMyField() { return myField; } // getter for myField
+    public void setMyField(int myField) { this.myField = myField; } // setter for myField
+}
+```
+
+
+**Lombok**: A Java library that automatically generates getters & setters to reduce boilerplate code.
+```
+import lombok.Getter; import lombok.Setter; // Import Lombok's Getter and Setter annotations
+
+public class MyClass {
+@Getter @Setter private int myField; // Lombok will generate a getter and setter for myField
+}
+```
+
+**Boiler Plate Code**: Sections of code that have to be included in many places with little or no alteration. It's often seen as repetitive and mundane, serving as necessary "plumbing" to make things work, but not contributing to the actual functionality or logic of the program.
+```
+public class MyClassWithoutLombok {
+private int myField; // myField is private
+
+    public int getMyField() { return myField; } // Boilerplate getter for myField
+    public void setMyField(int myField) { this.myField = myField; } // Boilerplate setter for myField
+}
+```
