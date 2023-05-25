@@ -290,3 +290,14 @@ public class MyClass {
   }
 }
 ```
+
+**Scanner**: A class used to get user input from the console. Can parse primitives and strings. An easier replacement 
+for System.in.
+
+**Exception**: Any error that happens in code. Handled with try/catch so the program knows what to do instead 
+of crashing.
+
+**Import statements**: Lets us use classes from code created by others.
+
+**Return multiple items from a function**: This is most commonly accomplished by using collections (list, set, map, etc)
+but you can also use arrays and classes.
