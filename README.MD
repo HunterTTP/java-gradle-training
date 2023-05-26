@@ -449,3 +449,82 @@ private int myField; // myField is private
     public void setMyField(int myField) { this.myField = myField; } // Boilerplate setter for myField
 }
 ```
+
+**this**: A special keyword in Java that refers to the instance that was created when the object was instantiated. It
+can be used to access field on a class.
+
+**Constructor**: a constructor is a special method used to initialize objects. If you don't explicitly define a 
+constructor, Java provides a default one, which doesn't take any parameters and doesn't set any values for the object's 
+fields. However, you can also define your own constructors with parameters to set initial values for an object's fields.
+If you don't explicitly set a value for a field in your constructor, it gets a default value based on its type (such as 
+0 for int, 0.0 for double, false for boolean, and null for objects). This also supports overloading so you can create
+multiple constructors with the same name and have them each take different arguments.
+```
+// Defining the Dog class with four attributes
+public class Dog {
+private String name;
+private int age;
+private double weight;
+private String breed;
+
+    // Defining a constructor that takes all four attributes
+    public Dog(String name, int age, double weight, String breed) {
+        this.name = name;  // Setting the name field to the value of the name parameter
+        this.age = age;  // Setting the age field to the value of the age parameter
+        this.weight = weight;  // Setting the weight field to the value of the weight parameter
+        this.breed = breed;  // Setting the breed field to the value of the breed parameter
+    }
+
+    // Defining a constructor that only takes name and breed
+    public Dog(String name, String breed) {
+        this.name = name;  // Setting the name field to the value of the name parameter
+        this.breed = breed;  // Setting the breed field to the value of the breed parameter
+        // The age and weight fields are not addressed here, so they will be set to their default values (0 and 0.0)
+    }
+}
+
+// Creating a new Dog object using the first constructor
+Dog myDog1 = new Dog("Fido", 5, 20.5, "Labrador");
+
+// Creating a new Dog object using the second constructor
+Dog myDog2 = new Dog("Rex", "German Shepherd");
+```
+
+**Builder**: A design pattern is a design pattern that provides a fluent, readable way to build complex objects by 
+allowing an object's construction to be controlled step-by-step, avoiding the need for numerous constructor parameters 
+or setter methods.
+```
+/// A basic Car class with two attributes and a builder
+public class Car {
+    private String make; // attribute 1
+    private String color; // attribute 2
+
+    private Car(CarBuilder builder) { // private constructor
+        this.make = builder.make; // assigning make from builder to Car
+        this.color = builder.color; // assigning color from builder to Car
+    }
+
+    // Builder class
+    public static class CarBuilder {
+        private String make; // builder attribute 1
+        private String color; // builder attribute 2
+
+        public CarBuilder make(String make) { // builder method for make
+            this.make = make;
+            return this;
+        }
+
+        public CarBuilder color(String color) { // builder method for color
+            this.color = color;
+            return this;
+        }
+
+        public Car build() { // build method creates and returns a new Car
+            return new Car(this);
+        }
+    }
+}
+
+/// Using the builder to create a new Car object
+Car myCar = new Car.CarBuilder().make("Toyota").color("Red").build(); // creating a new Car using builder
+```

@@ -10,7 +10,13 @@ public class Car {
     private boolean convertible = false;
 
     public void setMake(String make) {
-        this.make = make;
+
+        if (make == null) make = "Unknown";
+        String lowercaseMake = make.toLowerCase();
+        switch (lowercaseMake) {
+            case "rivian", "porchse", "tesla" -> this.make = make;
+            default -> {this.make = "Unsupported";}
+        }
     }
 
     public String getMake() {
